@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cell Classification MVP</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 class="title">
+                <span class="title-icon">🔬</span>
+                Cell Classification System
+            </h1>
+            <p class="subtitle">Zaawansowana klasyfikacja komórek z wykorzystaniem uczenia maszynowego</p>
+        </header>
+
+        <main>
+            <div class="upload-section">
+                <div class="upload-area" id="uploadArea">
+                    <input type="file" id="fileInput" accept="image/*" hidden>
+                    <div class="upload-content">
+                        <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="17 8 12 3 7 8"></polyline>
+                            <line x1="12" y1="3" x2="12" y2="15"></line>
+                        </svg>
+                        <p class="upload-text">Kliknij lub przeciągnij zdjęcie mikroskopu tutaj</p>
+                        <p class="upload-hint">Obsługiwane formaty: JPG, PNG, WEBP</p>
+                    </div>
+                    <div class="preview-container" id="previewContainer" style="display: none;">
+                        <img id="previewImage" src="" alt="Preview">
+                        <button class="remove-image" id="removeImage">×</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="classifier-section">
+                <h2 class="section-title">Wybierz klasyfikator</h2>
+                <div class="classifier-options">
+                    <label class="classifier-card">
+                        <input type="radio" name="classifier" value="knn-cosine" checked>
+                        <div class="card-content">
+                            <div class="card-icon">📊</div>
+                            <h3>KNN Cosine</h3>
+                            <p>Klasyfikacja oparta na podobieństwie cosinusowym</p>
+                        </div>
+                    </label>
+                    <label class="classifier-card">
+                        <input type="radio" name="classifier" value="knn-cubic">
+                        <div class="card-content">
+                            <div class="card-icon">📈</div>
+                            <h3>KNN Cubic</h3>
+                            <p>Klasyfikacja z funkcją jądra sześciennego</p>
+                        </div>
+                    </label>
+                    <label class="classifier-card">
+                        <input type="radio" name="classifier" value="naive-bayes">
+                        <div class="card-content">
+                            <div class="card-icon">🧮</div>
+                            <h3>Naive Bayes</h3>
+                            <p>Probabilistyczny klasyfikator bayesowski</p>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <div class="action-section">
+                <button class="analyze-btn" id="analyzeBtn" disabled>
+                    <span class="btn-text">Rozpocznij analizę</span>
+                    <span class="btn-loader" style="display: none;"></span>
+                </button>
+            </div>
+
+            <div class="results-section" id="resultsSection" style="display: none;">
+                <h2 class="section-title">Wyniki klasyfikacji</h2>
+                <div class="results-grid">
+                    <div class="result-card category-a">
+                        <div class="result-icon">A</div>
+                        <div class="result-info">
+                            <h3>Kategoria A</h3>
+                            <p class="result-count" id="countA">0</p>
+                            <p class="result-label">znalezionych komórek</p>
+                        </div>
+                    </div>
+                    <div class="result-card category-b">
+                        <div class="result-icon">B</div>
+                        <div class="result-info">
+                            <h3>Kategoria B</h3>
+                            <p class="result-count" id="countB">0</p>
+                            <p class="result-label">znalezionych komórek</p>
+                        </div>
+                    </div>
+                    <div class="result-card category-c">
+                        <div class="result-icon">C</div>
+                        <div class="result-info">
+                            <h3>Kategoria C</h3>
+                            <p class="result-count" id="countC">0</p>
+                            <p class="result-label">znalezionych komórek</p>
+                        </div>
+                    </div>
+                    <div class="result-card category-d">
+                        <div class="result-icon">D</div>
+                        <div class="result-info">
+                            <h3>Kategoria D</h3>
+                            <p class="result-count" id="countD">0</p>
+                            <p class="result-label">znalezionych komórek</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="summary-card">
+                    <h3>Podsumowanie</h3>
+                    <p class="summary-text">Wykorzystany klasyfikator: <strong id="usedClassifier"></strong></p>
+                    <p class="summary-text">Łączna liczba wykrytych komórek: <strong id="totalCount">0</strong></p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
+
