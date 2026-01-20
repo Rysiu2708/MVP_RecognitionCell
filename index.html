@@ -30,7 +30,10 @@
                         <p class="upload-hint">Obsługiwane formaty: JPG, PNG, WEBP</p>
                     </div>
                     <div class="preview-container" id="previewContainer" style="display: none;">
-                        <img id="previewImage" src="" alt="Preview">
+                        <div class="image-wrapper">
+                            <img id="previewImage" src="" alt="Preview">
+                            <canvas id="overlayCanvas"></canvas>
+                        </div>
                         <button class="remove-image" id="removeImage">×</button>
                     </div>
                 </div>
